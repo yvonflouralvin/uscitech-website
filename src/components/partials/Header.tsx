@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon, HistoryIcon, Linkedin, LinkedinIcon, LocateIcon, MailIcon, MapPinIcon, PhoneCall, TwitterIcon } from 'lucide-react'
+import { ArrowUpRightIcon, HistoryIcon, LinkedinIcon, MailIcon, MapPinIcon, PhoneCall, TwitterIcon } from 'lucide-react'
 import React from 'react'
 import Button from '../ui/Button'
 import SectionWrapper from './SectionWrapper'
@@ -6,11 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
-type Menu = {
-    label: string,
-    link?: string,
-    menu?: Menu
-}
 export default function Header() {
     const sub_header_info = [
         { icon: <PhoneCall size={14} />, info: "(+243) 998 123 456" },

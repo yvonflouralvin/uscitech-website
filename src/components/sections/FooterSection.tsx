@@ -1,6 +1,6 @@
 import React from 'react'
 import SectionWrapper from '../partials/SectionWrapper'
-import { Linkedin, LinkedinIcon, Twitter, TwitterIcon } from 'lucide-react'
+import { Linkedin, Twitter } from 'lucide-react'
 
 function FooterSection() {
     return (

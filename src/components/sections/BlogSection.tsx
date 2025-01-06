@@ -24,7 +24,7 @@ export default function BlogSection(){
                 </div>
                 <div className='flex flex-col sm:flex-row gap-5 pt-10'>
                     {
-                        [1, 2, 3].map((el: any) => (
+                        [1, 2, 3].map((el: number) => (
                             <BlogItem key={el}
                                 category='Business'
                                 title='Guide To Newly Supporte Morden CSS Psedo'

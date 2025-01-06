@@ -1,5 +1,4 @@
-import React from 'react';
-import PageHeader from "@/components/partials/PageHeader";
+import React from 'react'; 
 import CTASection from '@/components/sections/CTASection';
 
 

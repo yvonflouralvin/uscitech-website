@@ -4,8 +4,7 @@ import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 
 import './style.css'
-import Image from 'next/image';
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
+//const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 
 export default function Slideshow() {
   const slides = [

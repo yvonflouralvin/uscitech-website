@@ -9,7 +9,7 @@ type BlogItemType = {
 }
 
 function BlogItem({
-    title, date, category, description
+    title, category, description
 }: BlogItemType) {
     return (
         <div className='w-full sm:w-1/3 flex flex-col gap-3 flex-1'>

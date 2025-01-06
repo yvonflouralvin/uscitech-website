@@ -4,7 +4,7 @@ import React from 'react'
 
 interface Props {
     type?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'light'
-    icon?: any
+    icon?: React.ReactNode|React.ReactElement
     label?: string
     isIconOnly?: boolean,
     useAsLink?: boolean,
@@ -40,7 +40,7 @@ export default function Button(props: Props = {
                 :
                 <button className={currentClasses}
                     onClick={() => {
-                        props.onClick && props.onClick()
+                        if(props.onClick !== undefined) props.onClick()
                     }}>
                     {!props.isIconOnly &&
                         <LabelButton label={props?.label || ''} />
