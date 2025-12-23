@@ -17,6 +17,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Uscitech",
   description: "UNIVERSITE DES SCIENCES ET TECHNOLOGIES | UNIVERSITE CANADIENNE BILINGUE",
+  icons: {
+    icon: "/icon_uscitech.png",
+    shortcut: "/icon_uscitech.png",
+    apple: "/icon_uscitech.png",
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="icon" href="/icon_uscitech.png" />
+        <link rel="apple-touch-icon" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/png" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/svg+xml" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/x-icon" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/webp" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/gif" href="/icon_uscitech.png" />
+        <link rel="icon" type="image/jpeg" href="/icon_uscitech.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

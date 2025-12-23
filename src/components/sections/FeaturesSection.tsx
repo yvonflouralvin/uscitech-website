@@ -11,7 +11,7 @@ function FeaturesSection() {
             <div className='w-full flex flex-col sm:flex-row gap-10 md:gap-20 border p-[18px] sm:p-[30px] md:p-[60px] rounded'>
                 <div className='flex flex-col flex-1 gap-6'>
                     <SectionTitle maxWidth='max-w-lg'
-                        label='Nos Facutlés'
+                        label='Nos Facultés'
                         title='Venez explorer nos cursus académiques et découvrir votre voie vers le futur'
                     />
                     <div>

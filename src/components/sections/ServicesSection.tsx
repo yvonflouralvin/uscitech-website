@@ -6,7 +6,7 @@ import Button from '../ui/Button'
 
 function ServicesSection({
     backGroundType, className
-}:{
+}: {
     className?: string,
     backGroundType?: 'fill' | 'transparent'
 }) {
@@ -19,23 +19,23 @@ function ServicesSection({
                         title='RAISONS PRINCIPALES POUR CHOISIR USCITECH'
                     />
                     <p className='font-extralight'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero consequatur nesciunt animi velit.
+                        L'excellence n'est pas un accomplissement, plutôt un état d’esprit, laissez –nous activer ce processus sans fin en vous.
                     </p>
                 </div>
                 <div className='flex flex-wrap justify-between gap-[10px]'>
-                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false }
+                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false}
                         title='Bénéficier de l’excellence de l’éducation canadienne en RDC'
                         description='Avec une variété de programmes innovants continuellement enrichis par le développement de nouvelles connaissances scientifiques et technologiques.'
                     />
-                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false }
+                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false}
                         title='Des auditoires ergonomiques et des laboratoires - ateliers équipés '
                         description='Vous pourrez étudier et travailler en petits groupes pour une meilleure prise en charge et collaboration.'
                     />
-                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false }
+                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false}
                         title='Formation pratique en collaboration avec les milieux professionnels'
                         description='Nous avons établi des ententes de collaborations avec ces milieux professionnels pour offrir une formation innovante afin d’assurer votre employabilité'
                     />
-                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false }
+                    <ServiceCard isBgTransparent={backGroundType === 'transparent' ? true : false}
                         title='Programmes ancrés sur le développent du leadership'
                         description='Préparer les futurs diplômés à être des créateurs d’entreprises et de richesses dont la RDC a tant besoin pour son développement'
                     />

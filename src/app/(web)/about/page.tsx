@@ -9,7 +9,7 @@ export default function Page() {
         <PageHeader title="A Propos" links={[{ label: 'A Propos', href: '/about' }]} />
         <SectionWrapper marginSize="md">
             <div className="float-right border-primary border-[5px] m-[20px] mt-[70px] ">
-                <Image width={1000} height={1000} src='/students.jpg' alt="Uscitech Diplomate" className="relative top-[-20px] right-[-20px] border border-primary w-[550px] h-auto m-auto" />
+                <Image width={1000} height={1000} src='/students.jpg' alt="Uscitech Diplomate" className="relative top-[-20px] right-[-20px] border border-primary md:w-[300px] w-[550px] h-auto m-auto" />
             </div>
             <div className="p-[30px]">
                 <div className="flex">

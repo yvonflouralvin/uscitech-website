@@ -11,8 +11,9 @@ export default async function MainWrapper(props: Props) {
     // For example, you could use a library like React Suspense or use a loading component
 
     return <div className="flex flex-col w-full">
-        <Header />
+        
         {props.children}
         <FooterSection />
+        <Header />
     </div>
 }

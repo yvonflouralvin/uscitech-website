@@ -22,18 +22,18 @@ function CTASection({
             <div className='flex flex-col mx-auto py-10'>
                 <div className='w-full flex flex-wrap gap-7 items-center justify-between'>
                     <SectionTitle
-                        title={title || 'Get every single news & blogs'}
+                        title={title || 'Recevez toutes les nouvelles et nos derniers articles'}
                         label=""
                         maxWidth='max-w-sm'
                     />
                     <div className='flex flex-wrap gap-3'>
                         {
                             forNewsLetter &&
-                            <input type="text" placeholder='Your email' className='w-full sm:w-80 h-9 rounded-full px-4' />
+                            <input type="text" placeholder='Email ' className='w-full sm:w-80 h-9 rounded-full px-4' />
                         }
                         <Button
                             type='primary'
-                            label={buttonLabel || 'Subscrib'}
+                            label={buttonLabel || 'Souscrire'}
                             icon={<ArrowUpRightIcon size={13} />}
                         />
                     </div>

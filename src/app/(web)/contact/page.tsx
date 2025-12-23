@@ -15,9 +15,9 @@ export default async function Page() {
                             <MapPinIcon size={25} />
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <h3 className='font-bold'>Visit Us</h3>
+                            <h3 className='font-bold'>Notre Adresse</h3>
                             <span className='text-zinc-700'>
-                                41, Av. Kananga, Q. Pigeon, C. Ngaliema
+                                41, Av. Kananga, Q. Pigeon, C. Ngaliema, Kinshasa
                             </span>
                         </div>
                     </div>
@@ -26,9 +26,9 @@ export default async function Page() {
                             <Phone size={25} />
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <h3 className='font-bold'>Call Us</h3>
+                            <h3 className='font-bold'>Nous contacter</h3>
                             <span className='text-zinc-700'>
-                                (+243) 998 123 456
+                                (+243) 975 123 456
                             </span>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ export default async function Page() {
                             <Mail size={25} />
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <h3 className='font-bold'>Email Us</h3>
+                            <h3 className='font-bold'>Nous écrire</h3>
                             <span className='text-zinc-700'>
                                 info@uscitech.ac.cd
                             </span>
@@ -47,14 +47,14 @@ export default async function Page() {
 
                 <div className='flex flex-col gap-5 p-6 sm:p-12 md:p-20 bg-[#F0EFEA]'>
                     <h2 className='max-w-lg mx-auto text-2xl sm:text-3xl font-bold text-center'>
-                        Leave us a message for any information
+                        Vous pouvez nous laisser un message
                     </h2>
                     <form action="" className='max-w-lg w-full mx-auto flex flex-col gap-3.5'>
-                        <input required type="text" placeholder='Name' className='w-full rounded-full px-4 py-2' />
+                        <input required type="text" placeholder='Nom complet' className='w-full rounded-full px-4 py-2' />
                         <input required type="text" placeholder='Email' className='w-full rounded-full px-4 py-2' />
-                        <textarea required name="" id="" rows={5} placeholder='Your Message' className='w-full rounded-3xl px-4 py-2'></textarea>
+                        <textarea required name="" id="" rows={5} placeholder='Votre message' className='w-full rounded-3xl px-4 py-2'></textarea>
                         <Button
-                            label='Send Message'
+                            label='Envoyer le Message'
                             type='primary'
                             icon={<ArrowUpRightIcon size={13} />}
                         />

@@ -4,6 +4,7 @@ import SectionTitle from '../partials/SectionTitle'
 import Button from '../ui/Button'
 import { ArrowUpRightIcon } from 'lucide-react'
 import SectionWrapper from '../partials/SectionWrapper'
+import Link from 'next/link'
 
 function AboutSection() {
     return (
@@ -11,17 +12,17 @@ function AboutSection() {
             <div className='flex flex-col sm:flex-row gap-10 md:gap-24'>
                 <div className="relative flex flex-1 justify-center items-center">
                     <Image width={1000} height={1000} src='/uscitech_student.png' alt="Uscitech Diplomate"
-                        className=" w-[300px] h-auto m-auto"
-                    />
+                        className=" w-[300px] h-auto m-auto"/>
                     <div className='w-80 absolute shadow-md -left-1 sm:-left-5 md:left-5 top-[60%] bg-blue-300 px-6 py-4'>
-                        <div className='relative flex flex-col gap-3'>
-                            <div className='flex absolute -top-8 gap-2 items-end'>
+                        <div className='relative flex flex-col'>
+                            <div className='flex gap-2 items-end'>
                                 <div className='w-16 h-16 rounded-full bg-gray-500'></div>
-                                <h3 className='font-semibold pb-2'>Pr. KAFUNDA , <span className='text-orange-600'>Secretaire Academique</span></h3>
+                                <h3 className='font-semibold pb-2'>Pr. KAFUNDA , <span className='text-orange-600'>SECRÉTAIRE GÉNÉRALE ACADÉMIQUE</span></h3>
                             </div>
-                            <p className='mt-10 font-extralight'>
-                                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti eligendi fuga earum architecto."
+                            <p className='mt-5 font-extralight'>
+                                "Un homme bien formé a la capacité D’analyser sa société, déceler les points fort et faible de celle-ci et proposer des solutions efficaces et robustes"
                             </p>
+                            <Link href="/mot-ouverture-prof-kafunda"><p>Lire ...</p></Link>
                         </div>
                     </div>
                 </div>
