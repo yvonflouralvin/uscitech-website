@@ -1,15 +1,13 @@
-import AboutSection from "@/components/sections/AboutSection";
-// import BlogSection from "@/components/sections/BlogSection";
-import CTASection from "@/components/sections/CTASection";
-// import FactultiesImages from "@/components/sections/facultiesImages";
+import AboutSection from "@/components/sections/AboutSection"; 
+import CTASection from "@/components/sections/CTASection"; 
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import Slideshow from "@/components/sections/slideshow/SliderShow"; 
+import SliderImage from "@/components/sections/SliderImage"; 
 
 export default function Home() {
   return (
-    <>
-      <Slideshow />
+    <> 
+      <SliderImage />
       {/* <FactultiesImages /> */}
       <div className="mt-[20px]">
         <FeaturesSection />
