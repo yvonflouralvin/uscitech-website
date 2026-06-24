@@ -82,7 +82,7 @@ export default function Page() {
                     </p>
                     <p className="text-gray-500 mt-[20px]">
                         Pour plus d'informations, contactez-nous : <br />
-                        <span className="flex gap-[10px]"><Phone size={"13px"}/> +243 998 123 456<br /></span>
+                        <span className="flex gap-[10px]"><Phone size={"13px"}/> +243 976 535 538<br /></span>
                         <span className="flex gap-[10px]"><Mail size={"13px"}/> info@uscitech.ac.cd<br /></span>
                         <span className="flex gap-[10px]"><WebhookIcon size={"13px"}/> www.uscitech.ac.cd<br /></span>
                     </p>

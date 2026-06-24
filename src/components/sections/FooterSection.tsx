@@ -7,7 +7,7 @@ import Image from 'next/image'
 function FooterSection() {
 
     const sub_header_info = [
-        { icon: <PhoneCall size={14} color='white'/>, info: "(+243) 998 123 456" },
+        { icon: <PhoneCall size={14} color='white'/>, info: "+243 976 535 538" },
         { icon: <MailIcon size={14} color='white' />, info: "info@uscitech.ac.cd" },
         { icon: <MapPinIcon size={14} color='white' />, info: "41, Av. Kananga, Q. Pigeon, C. Ngaliema, Kinshasa" },
     ]

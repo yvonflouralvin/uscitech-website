@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 
 export default function Header() {
     const sub_header_info = [
-        { icon: <PhoneCall size={14} />, info: "(+243) 998 123 456" },
+        { icon: <PhoneCall size={14} />, info: "+243 976 535 538" },
         { icon: <MailIcon size={14} />, info: "info@uscitech.ac.cd" },
         { icon: <MapPinIcon size={14} />, info: "41, Av. Kananga, Q. Pigeon, C. Ngaliema, Kinshasa" },
     ]
