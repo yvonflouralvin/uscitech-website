@@ -3,9 +3,12 @@ import { AlignRight, ArrowUpRightIcon, FacebookIcon, HistoryIcon, InstagramIcon,
 import React from 'react'
 import Button from '../ui/Button'
 import SectionWrapper from './SectionWrapper'
+import AnnouncementBanner from './AnnouncementBanner'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+
+const BANNER_DISMISSED_KEY = 'inscription-banner-dismissed-2025-2026'
 
 
 export default function Header() {
@@ -44,15 +47,31 @@ export default function Header() {
 
     const pathname = usePathname()
     React.useEffect(()=>{ setIsMenuOpen(false) ; }, [pathname])
-    
+
+    const [isBannerVisible, setIsBannerVisible] = React.useState(false)
+
+    React.useEffect(()=>{
+        if(localStorage.getItem(BANNER_DISMISSED_KEY) !== 'true') {
+            setIsBannerVisible(true)
+        }
+    },[])
+
+    const closeBanner = () => {
+        localStorage.setItem(BANNER_DISMISSED_KEY, 'true')
+        setIsBannerVisible(false)
+    }
+
 
     return <>
         <SectionWrapper marginSize='md' className='bg-[#F0EFEA]'>
-        <div className={`duration-300 w-full md:flex justify-between m-auto fixed top-0 left-0 p-[10px] px-[20px]`} style={{
+        <div className={`duration-300 w-full m-auto fixed top-0 left-0 p-[10px] px-[20px]`} style={{
             backgroundColor: `${ headerScroll ? `rgba(255, 255, 255, 1)` : `rgba(255, 255, 255, 0)` }`,
             color: `${ headerScroll ? `black` : `white` }`,
             boxShadow: `rgba(0, 0, 0, ${ headerScroll ? `0.2` : `0` }) 0px 2px 8px 0px`,
         }}>
+            {isBannerVisible && <AnnouncementBanner onClose={closeBanner} />}
+
+            <div className='w-full md:flex justify-between'>
             {/* Logo Container */}
             <div className='hidden cursor-pointer bg-transparent text-center lg:flex justify-center items-center text-white'>
                 <Link href={"/"}><Image src="/logo_uscitech.webp" alt='logo Uscitech' width={200} height={100} /></Link>
@@ -87,9 +106,9 @@ export default function Header() {
                             <HistoryIcon size={14} />
                             <p className='text-[13px]'>Lundi - Vendredi : 08:30-16:30</p>
                         </div>
-                        <div className='flex items-center gap-[5px]'> 
+                        <div className='flex items-center gap-[5px]'>
                             <Link href="https://web.facebook.com/theuscitech" target='_blank'><FacebookIcon size={15} /></Link>
-                            <Link href="https://www.instagram.com/reel/DEHPG1KirOw/?igsh=MXBtM2lvazlhbTI1bA==" target='_blank'><InstagramIcon size={15} /></Link> 
+                            <Link href="https://www.instagram.com/reel/DEHPG1KirOw/?igsh=MXBtM2lvazlhbTI1bA==" target='_blank'><InstagramIcon size={15} /></Link>
                         </div>
                     </div>
                 </div>
@@ -114,6 +133,7 @@ export default function Header() {
 
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </SectionWrapper>
