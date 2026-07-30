@@ -1,31 +1,83 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ImageIcon } from "lucide-react";
-import PageHeader from "@/components/partials/PageHeader";
+import { ArrowRight, Camera, ImageIcon, Layers } from "lucide-react";
 import SectionWrapper from "@/components/partials/SectionWrapper";
 import { galeries } from "@/lib";
 
 export default function Gallery() {
+  const totalActivities = galeries.length;
+  const totalPhotos = galeries.reduce(
+    (sum, activity) => sum + activity.images.length,
+    0
+  );
+
   return (
     <>
-      <PageHeader
-        title="Galerie d'activités"
-        links={[{ label: "Galerie", href: "/galerie" }]}
-      />
-      <div
-        className="bg-[url('/gallery/_00162191.png')] bg-cover bg-center bg-no-repeat flex items-center justify-left p-[40px] relative"
-        style={{ backgroundAttachment: "fixed" }}
-      >
-        <div className="shadow-xl flex flex-col gap-[10px] bg-[rgba(0,0,0,0.5)] text-white backdrop-blur-[4px] p-[40px] min-h-[250px] relative z-10">
-          <h1 className="text-orange text-[35px] font-bold m-0">
-            Découvrez USCITECH en Images
-          </h1>
-          <p className="mb-[30px] text-[20px]">
-            Explorez nos activités et cérémonies. Cliquez sur une activité pour
-            consulter toute sa galerie photo.
-          </p>
+      <section className="relative min-h-[440px] flex items-center overflow-hidden pt-[70px]">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <Image
+            src="/gallery/_MC00096.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_25%]"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
-      </div>
+
+        <SectionWrapper marginSize="md" className="relative z-10 py-[50px]">
+          <div className="max-w-[660px]">
+            {/* Fil d'Ariane */}
+            <div className="flex items-center gap-[10px] text-[14px] font-medium text-white/70 mb-[24px]">
+              <Link href="/" className="hover:text-primary duration-300">
+                Accueil
+              </Link>
+              <span className="text-white/40">/</span>
+              <span className="text-primary">Galerie</span>
+            </div>
+
+            {/* Badge */}
+            <span className="inline-flex items-center gap-[8px] rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-[14px] py-[6px] text-[13px] font-semibold text-primary mb-[20px]">
+              <Camera size={15} />
+              Galerie USCITECH
+            </span>
+
+            <h1 className="text-[38px] md:text-[48px] leading-[1.1] font-bold text-white m-0">
+              Découvrez USCITECH <span className="text-primary">en images</span>
+            </h1>
+            <p className="text-[18px] md:text-[20px] text-white/80 mt-[18px] mb-0">
+              Explorez nos activités et cérémonies. Cliquez sur une activité pour
+              consulter toute sa galerie photo.
+            </p>
+
+            {/* Statistiques */}
+            <div className="flex flex-wrap gap-[14px] mt-[30px]">
+              <div className="flex items-center gap-[12px] rounded-[12px] bg-white/10 border border-white/15 backdrop-blur-sm px-[18px] py-[12px]">
+                <Layers className="text-primary" size={22} />
+                <div>
+                  <p className="text-[22px] font-bold text-white leading-none m-0">
+                    {totalActivities}
+                  </p>
+                  <p className="text-[13px] text-white/70 m-0">Activités</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-[12px] rounded-[12px] bg-white/10 border border-white/15 backdrop-blur-sm px-[18px] py-[12px]">
+                <ImageIcon className="text-primary" size={22} />
+                <div>
+                  <p className="text-[22px] font-bold text-white leading-none m-0">
+                    {totalPhotos}
+                  </p>
+                  <p className="text-[13px] text-white/70 m-0">Photos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SectionWrapper>
+      </section>
 
       <SectionWrapper marginSize="md" className="py-[50px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
