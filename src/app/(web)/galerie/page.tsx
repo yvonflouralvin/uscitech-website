@@ -89,7 +89,7 @@ export default function Gallery() {
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src={`/gallery/${activity.images[0]}.jpg`}
+                  src={activity.images[0]}
                   alt={activity.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

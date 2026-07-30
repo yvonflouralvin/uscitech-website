@@ -9,10 +9,79 @@ type GalleryLightboxProps = {
   title: string;
 };
 
+// Nombre d'images ajoutées à chaque chargement progressif
+const BATCH = 12;
+
+// Motif de mosaïque : certaines images sont plus grandes pour rythmer la grille
+function tileSpan(index: number): string {
+  const p = index % 10;
+  if (p === 0) return "col-span-2 row-span-2"; // grande (2x2)
+  if (p === 3) return "row-span-2"; // haute (1x2)
+  if (p === 6) return "md:col-span-2"; // large (2x1) sur écrans moyens+
+  return "";
+}
+
+type TileProps = {
+  image: string;
+  index: number;
+  title: string;
+  onOpen: () => void;
+};
+
+function GalleryTile({ image, index, title, onOpen }: TileProps) {
+  const [loaded, setLoaded] = React.useState(false);
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`Agrandir la photo ${index + 1}`}
+      className={`group relative overflow-hidden rounded-[10px] cursor-pointer bg-[#EDEBE4] ${tileSpan(index)}`}
+    >
+      <Image
+        src={image}
+        alt={`${title} — photo ${index + 1}`}
+        fill
+        loading="lazy"
+        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        onLoad={() => setLoaded(true)}
+        className={`object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+          loaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-md scale-105"
+        }`}
+        quality={80}
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+    </button>
+  );
+}
+
 export default function GalleryLightbox({ images, title }: GalleryLightboxProps) {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+  const [visible, setVisible] = React.useState(() =>
+    Math.min(BATCH, images.length)
+  );
+  const sentinelRef = React.useRef<HTMLDivElement>(null);
 
   const isOpen = activeIndex !== null;
+  const hasMore = visible < images.length;
+
+  // Chargement progressif : révèle un nouveau lot à l'approche du bas de page
+  React.useEffect(() => {
+    if (!hasMore) return;
+    const el = sentinelRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible((v) => Math.min(v + BATCH, images.length));
+        }
+      },
+      { rootMargin: "600px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasMore, images.length]);
 
   const close = React.useCallback(() => setActiveIndex(null), []);
   const next = React.useCallback(
@@ -20,7 +89,10 @@ export default function GalleryLightbox({ images, title }: GalleryLightboxProps)
     [images.length]
   );
   const prev = React.useCallback(
-    () => setActiveIndex((i) => (i === null ? i : (i - 1 + images.length) % images.length)),
+    () =>
+      setActiveIndex((i) =>
+        i === null ? i : (i - 1 + images.length) % images.length
+      ),
     [images.length]
   );
 
@@ -41,26 +113,27 @@ export default function GalleryLightbox({ images, title }: GalleryLightboxProps)
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((image, index) => (
-          <button
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[160px] md:auto-rows-[190px] grid-flow-row-dense gap-3 md:gap-4">
+        {images.slice(0, visible).map((image, index) => (
+          <GalleryTile
             key={image}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            className="group relative aspect-square overflow-hidden rounded-[10px] cursor-pointer bg-[#F0EFEA]"
-          >
-            <Image
-              src={`/gallery/${image}.jpg`}
-              alt={`${title} — photo ${index + 1}`}
-              fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-              quality={85}
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-          </button>
+            image={image}
+            index={index}
+            title={title}
+            onOpen={() => setActiveIndex(index)}
+          />
         ))}
       </div>
+
+      {hasMore && (
+        <div
+          ref={sentinelRef}
+          className="flex items-center justify-center gap-[10px] py-[36px] text-zinc-400 text-[14px]"
+        >
+          <span className="h-[18px] w-[18px] rounded-full border-2 border-zinc-300 border-t-primary animate-spin" />
+          Chargement des photos…
+        </div>
+      )}
 
       {isOpen && (
         <div
@@ -95,7 +168,7 @@ export default function GalleryLightbox({ images, title }: GalleryLightboxProps)
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={`/gallery/${images[activeIndex!]}.jpg`}
+              src={images[activeIndex!]}
               alt={`${title} — photo ${activeIndex! + 1}`}
               fill
               sizes="92vw"
