@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, ImageIcon, Layers } from "lucide-react";
+import { ArrowRight, Calendar, Camera, ImageIcon, Layers } from "lucide-react";
 import SectionWrapper from "@/components/partials/SectionWrapper";
 import { galeries } from "@/lib";
 
@@ -107,6 +107,12 @@ export default function Gallery() {
                 <h2 className="text-[22px] font-bold m-0 group-hover:text-[#007bff] duration-300">
                   {activity.title}
                 </h2>
+                {activity.date && (
+                  <span className="flex items-center gap-[6px] text-[13px] text-zinc-500 mt-[8px]">
+                    <Calendar size={14} />
+                    {activity.date}
+                  </span>
+                )}
                 <p className="text-[15px] text-zinc-600 mt-[8px] mb-[16px] line-clamp-3">
                   {activity.description}
                 </p>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ImageIcon } from "lucide-react";
+import { ArrowLeft, Calendar, ImageIcon } from "lucide-react";
 import PageHeader from "@/components/partials/PageHeader";
 import SectionWrapper from "@/components/partials/SectionWrapper";
 import GalleryLightbox from "@/components/sections/gallery/GalleryLightbox";
@@ -42,10 +42,33 @@ export default async function ActivityGalleryPage({
 
         <div className="max-w-[720px] mb-[30px]">
           <div className="border-t-[3px] max-w-[200px] border-primary mb-[15px]" />
-          <p className="text-[18px] text-zinc-600 m-0">{activity.description}</p>
-          <div className="flex items-center gap-[8px] text-zinc-500 text-[14px] mt-[12px]">
-            <ImageIcon size={16} />
-            <span>{activity.images.length} photos</span>
+          {activity.content ? (
+            activity.content.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-[17px] leading-[1.7] text-zinc-600 m-0 ${
+                  index === 0 ? "" : "mt-[14px]"
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))
+          ) : (
+            <p className="text-[18px] text-zinc-600 m-0">
+              {activity.description}
+            </p>
+          )}
+          <div className="flex flex-wrap items-center gap-x-[18px] gap-y-[8px] text-zinc-500 text-[14px] mt-[16px]">
+            {activity.date && (
+              <span className="flex items-center gap-[8px]">
+                <Calendar size={16} />
+                {activity.date}
+              </span>
+            )}
+            <span className="flex items-center gap-[8px]">
+              <ImageIcon size={16} />
+              {activity.images.length} photos
+            </span>
           </div>
         </div>
 
